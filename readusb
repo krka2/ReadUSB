@@ -1,0 +1,38 @@
+import sys
+readout=""
+fp = open('/dev/hidraw0', 'rb')
+
+while True:
+   buffer = fp.read(8)
+   for c in buffer:
+      if ord(c) > 0:
+      	 if ord(c) == 30:
+      	 	readout = readout + "1"
+      	 if ord(c) == 31:
+      	 	readout = readout + "2"
+      	 if ord(c) == 32:
+      	 	readout = readout + "3"
+      	 if ord(c) == 33:
+      	 	readout = readout + "4"
+      	 if ord(c) == 34:
+      	 	readout = readout + "5"
+      	 if ord(c) == 35:
+      	 	readout = readout + "6"
+      	 if ord(c) == 36:
+      	 	readout = readout + "7"
+      	 if ord(c) == 37:
+      	 	readout = readout + "8"
+      	 if ord(c) == 38:
+      	 	readout = readout + "9"
+      	 if ord(c) == 39:
+      	 	readout = readout + "0"
+         if ord(c) == 55:
+		readout = readout + "."
+      	 if ord(c) == 44: 
+      	 	print readout
+      	 	f= open('/home/pi/light', 'w')
+      	 	f.write(readout)
+      	 	f.close 	 
+      	 	readout=""	
+         #print ord(c)
+   #print "\n"
